@@ -6,15 +6,15 @@ import time
 domain = input('Enter any specific domain: ')
 location = input('Enter the location where you are intrested to work: ')
 unknown = input('Enter unfamiliar skills: ').split()
+print('')
+print('Searching for jobs....')
+print('')
 
 
 def get_data():
+
     html_txt = requests.get(
         f'https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords={domain}&txtLocation={location}').text
-
-    print('')
-    print('All the Listed jobs in your region.')
-    print('')
 
     soup = BeautifulSoup(html_txt, 'lxml')
     jobs = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
